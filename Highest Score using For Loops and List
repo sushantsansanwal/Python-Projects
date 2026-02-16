@@ -1,0 +1,6 @@
+Student_Scores = [180, 124, 156, 173, 189, 169, 146]
+max_score = 0
+for score in Student_Scores:
+    if score > max_score:
+        max_score = score
+print(max_score)
