@@ -1,0 +1,23 @@
+#Below code solves for Reeborg's World with variable height jumps!
+def turn_right():
+    turn_left()
+    turn_left()
+    turn_left()
+
+def jump():
+    turn_left()
+    #while wall_in_front() != True and right_is_clear() != True:
+    while right_is_clear() != True:
+        move()
+    turn_right()
+    move()
+    turn_right()
+    while front_is_clear() == True:
+          move()
+    turn_left()
+    
+while at_goal() != True:
+    if wall_in_front() == True:    
+       jump()
+    else:
+       move()
