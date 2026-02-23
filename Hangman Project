@@ -1,0 +1,40 @@
+import random as r
+from hangman_list import Word_List
+print("Welcome to the Hangman Game")
+Lives = 6
+Chosen_Word = r.choice(Word_List)
+print(Chosen_Word)
+placeholder = ""
+for x in range(0,len(Chosen_Word)):
+    placeholder += "_"
+print(placeholder)
+New_Display = []
+Game_Over = False
+while not Game_Over:
+    print(f"**************{Lives}/6 LIVES LEFT*************")
+    Guess = input("Guess a letter: ").lower()
+
+    if Guess in New_Display:
+        print(f"You have already guessed {Guess}")
+    display = ""
+    for x in Chosen_Word:
+        if x == Guess:
+           display += x
+           New_Display.append(x)
+        elif x in New_Display:
+            display += x
+        else:
+           display += "_"
+    print("Word to guess: " + display)
+
+    if Guess not in Chosen_Word:
+        Lives -= 1
+        print(f"You guessed {Guess} in {Lives} lives")
+        if Lives == 0:
+            Game_Over = True
+            print(f"Correct word was {Chosen_Word}, try again")
+    if "_" not in display:
+        Game_Over = True
+        print("You Win!")
+
+
